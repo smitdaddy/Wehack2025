@@ -36,7 +36,7 @@ function Signup() {
     try {
       const response = await fetch("/api/signup", {
         method: "POST",
-        body: formData, // Do not set Content-Type here; the browser will set it automatically
+        body: formData, // browser sets the correct Content-Type automatically
       });
 
       const result = await response.json();
@@ -134,7 +134,10 @@ function Signup() {
 
         <p className="signin-link">
           Already a user?{" "}
-          <Link to="/signin" className="link">
+          <Link
+            to={isLawyer ? "/signin/lawyer" : "/signin/user"}
+            className="link"
+          >
             Login
           </Link>
         </p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signin.css";
 
-function Signin() {
+function SigninUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -10,7 +10,7 @@ function Signin() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/signin", {
+      const response = await fetch("/api/signin/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -43,7 +43,7 @@ function Signin() {
           </div>
         </div>
 
-        <h2>Welcome Back</h2>
+        <h2>User Sign-in</h2>
 
         <form onSubmit={handleSignin} className="signin-form">
           <div className="form-group">
@@ -78,4 +78,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default SigninUser;
