@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/user");
+const lawyerRoute = require("./routes/lawyer.routes")
 const mongoose = require("mongoose");
 const { restrictTo, checkforAuthenticationCookie } = require("./middlewear/auth");
 
