@@ -13,8 +13,13 @@ const PORT = 7500;
 
 //connection
 mongoose
-  .connect(process.env.MONGO_URL)
-  .then((e) => console.log("mongoDb connected"));
+  .connect("mongodb+srv://vishxcodes:PnPeX$690@clusterone.dy97w.mongodb.net/LawEase", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.error("MongoDB connection error:", err));
+
 
 //middleware
 app.use(express.json());
