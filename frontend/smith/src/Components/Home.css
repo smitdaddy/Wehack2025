@@ -1,0 +1,68 @@
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fffbd1, #ffe9a7);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5rem;
+  color: #1f2839;
+}
+
+.role-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  width: 250px;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card .icon {
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.card button {
+  background-color: #b69d74;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #1f2839;
+}

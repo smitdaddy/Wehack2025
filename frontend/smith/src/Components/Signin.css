@@ -1,0 +1,110 @@
+/* Entire background */
+.signin-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #fffbd1,
+    #ffe9a7
+  ); /* Light yellow gradient */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Card in the center */
+.signin-card {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures the curved header is clipped properly */
+  text-align: center;
+  position: relative;
+}
+
+/* Top arc / curved header */
+.signin-header {
+  background: #ffd466; /* A deeper yellow/gold for the top arc */
+  height: 100px;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon circle at the top */
+.icon-wrapper {
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40px; /* pull it above the arc */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-icon {
+  font-size: 40px;
+}
+
+/* "Welcome Back" heading */
+.signin-card h2 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Form styling */
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem;
+}
+
+/* Each input group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #b69d74; /* Tan border */
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #b69d74;
+  box-shadow: 0 0 5px rgba(182, 157, 116, 0.5); /* Subtle tan glow */
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #1f2839; /* Dark navy */
+  color: #fff;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #333; /* Slightly lighter */
+}
