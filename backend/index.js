@@ -2,7 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/user");
 const mongoose = require("mongoose");
-const { restrictTo } = require("./middlewear/auth");
+const { restrictTo, checkforAuthenticationCookie } = require("./middlewear/auth");
 
 
 
@@ -27,9 +27,9 @@ app.get("/", (req, res) => {
 
 //public routes
 app.use("/user/signup", userRoute);
-app.use("/user/login", userRoute);
+app.use("/user/signin", userRoute);
 app.use("/lawyer/signup",lawyerRoute);
-app.use("/lawyer/login", lawyerRoute);
+// app.use("/lawyer/signin", lawyerRoute);
 
 //protected routes
 app.use("/user",restrictTo(["USER"]), userRoute);
