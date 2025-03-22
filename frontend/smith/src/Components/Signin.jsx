@@ -4,11 +4,30 @@ import "./Signin.css";
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSignin = (e) => {
+  const handleSignin = async (e) => {
     e.preventDefault();
-    // handle sign-in logic here
-    console.log({ email, password });
+
+    try {
+      const response = await fetch("/api/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setMessage("Signin successful!");
+        // Optionally: save a token, redirect user, etc.
+      } else {
+        setMessage(`Error: ${result.error || "Signin failed"}`);
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("An error occurred during sign in.");
+    }
   };
 
   return (
@@ -53,6 +72,7 @@ function Signin() {
             Sign in
           </button>
         </form>
+        {message && <p className="signin-message">{message}</p>}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Signup.css";
 
@@ -12,23 +12,44 @@ function Signup() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [certificate, setCertificate] = useState(null);
+  const [message, setMessage] = useState("");
 
   const handleFileChange = (e) => {
     setCertificate(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // handle signup logic here
-    // e.g., send to backend or show console
-    console.log({
-      role: role || "user", // default to user if role is undefined
-      fullName,
-      email,
-      phone,
-      password,
-      certificate,
-    });
+    // Use FormData to handle file upload
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("password", password);
+    // Include role (default to "user" if not provided)
+    formData.append("role", role || "user");
+
+    if (isLawyer && certificate) {
+      formData.append("certificate", certificate);
+    }
+
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        body: formData, // Do not set Content-Type here; the browser will set it automatically
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setMessage(result.message || "Signup successful!");
+        // Optionally, reset the form fields here
+      } else {
+        setMessage(`Error: ${result.error || "Signup failed"}`);
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("An error occurred during signup.");
+    }
   };
 
   return (
@@ -108,6 +129,8 @@ function Signup() {
             Create Account
           </button>
         </form>
+
+        {message && <p className="signup-message">{message}</p>}
 
         <p className="signin-link">
           Already a user?{" "}
