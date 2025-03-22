@@ -37,3 +37,5 @@ router.post("/signup",async (req,res)=>{
     });
    return res.redirect("/user/signin");
 });
+
+module.exports = router;

@@ -3,12 +3,13 @@ const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/user");
 const lawyerRoute = require("./routes/lawyer.routes")
 const mongoose = require("mongoose");
+const cors = require("cors");
 const { restrictTo, checkforAuthenticationCookie } = require("./middlewear/auth");
 
 
 
 const app = express();
-const PORT = 7000;
+const PORT = 7500;
 
 //connection
 mongoose
@@ -20,6 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(checkforAuthenticationCookie("token"));
 app.use(cookieParser());
+app.use(cors());
+
 
 app.get("/", (req, res) => {
     res.send("Welcome user");
@@ -29,7 +32,7 @@ app.get("/", (req, res) => {
 //public routes
 app.use("/user/signup", userRoute);
 app.use("/user/signin", userRoute);
-app.use("/lawyer/signup",lawyerRoute);
+app.use("/lawyer/verify", lawyerRoute);
 // app.use("/lawyer/signin", lawyerRoute);
 
 //protected routes

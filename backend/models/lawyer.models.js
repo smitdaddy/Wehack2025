@@ -8,7 +8,7 @@ const lawyerSchema = new mongoose.Schema(
     password: { type: String, required: true },
     document: { type: String, required: true }, // Path to uploaded verification document
     isVerified: { type: Boolean, default: false }, // AI will update this if verified
-    role: { type: String, enum: ["LAWYER"], default: "LAWYER" }, // Role field for authentication
+    role: { type: String, enum: ["LAWYER"], default: "USER" }, // Role field for authentication
 
     // New fields for scheduling & fees
     consultationFee: { type: Number, required: false, default: 0 }, // Fees per session
@@ -23,7 +23,7 @@ const lawyerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.pre("save",function(next){       
+lawyerSchema.pre("save",function(next){       
     const user = this;   
  
     if(!user.isModified("password")) return;
@@ -38,7 +38,7 @@ userSchema.pre("save",function(next){
     next();
  });
  
- userSchema.static("matchPasswordAndGenerateToken", async function(email,password){
+ lawyerSchema.static("matchPasswordAndGenerateToken", async function(email,password){
     const user = await this.findOne({email });
     if(!user) throw new Error("User not Found!");
     const salt = user.salt
