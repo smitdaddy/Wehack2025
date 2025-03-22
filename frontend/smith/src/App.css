@@ -1,0 +1,76 @@
+/* Container for login/signup forms */
+.container {
+  border-radius: 8px;
+  background: #f5f5dc; /* beige background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form Group & Labels */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group input:focus {
+  border-color: #1f2839; /* darker green */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Submit Button */
+button[type="submit"] {
+  padding: 12px;
+  font-size: 1.1rem;
+  background-color: #1f2839;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #b69d74;
+  transform: translateY(-2px);
+}
+
+/* Tab Buttons (for Signup component) */
+.tabs,
+.signup-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tabs button,
+.signup-tabs button {
+  flex: 1;
+  padding: 12px;
+  background-color: #f5f5dc;
+  border: 2px solid #4caf50;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  color: #4caf50;
+}
+
+.tabs button.active,
+.signup-tabs button.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.tabs button:hover,
+.signup-tabs button:hover {
+  background-color: #388e3c;
+  color: #fff;
+  transform: translateY(-2px);
+}
