@@ -15,7 +15,28 @@ function checkforAuthenticationCookie(cookieName){
 
 }
 
+function restrictTo(roles = []) {
+    return function (req, res, next) {
+        if (!req.user) {
+            console.log("No user found, redirecting to login");
+            return res.redirect("/login");
+        }
+
+        console.log("User:", req.user);
+        console.log("Allowed Roles:", roles);
+
+        if (!roles.includes(req.user.role)) {
+            console.log("User role not authorized:", req.user.role);
+            return res.status(403).send("Unauthorized");
+        }
+
+        console.log("User is authorized, proceeding...");
+        next();
+    };
+}
+
 
 module.exports = {
    checkforAuthenticationCookie,
+   restrictTo,
 }
